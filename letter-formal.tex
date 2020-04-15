@@ -1,0 +1,96 @@
+% A configurable template for formal letters using KOMA-Script's scrlttr2 class.
+% Licensed as CC0 1.0 Universal Public Domain Dedication:
+% https://creativecommons.org/publicdomain/zero/1.0/deed
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Standard settings and tools.                                               %%
+%% There should be no need to modify them here; see the sections below.       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Load static sender info from ./sender.lco or ~/texmf/tex/latex/sender.lco
+\documentclass[sender]{scrlttr2}
+
+\usepackage[ngerman]{babel} % Set german formats for date and so on
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{libertine} % Use a nicer font than the LaTeX default
+\usepackage{lipsum} % Lorem ipsum placeholder text
+\usepackage{graphicx} % To include an image of the hand-written signature
+
+% Export KOMA metadata to PDF properties.
+% Source: https://komascript.de/node/1918
+\usepackage[pdftex]{hyperref}
+\AtBeginDocument{% Avoid using komavars that have not yet been defined
+  \begingroup
+    \usekomavar[\def\komaauthor]{fromname}
+    \usekomavar[\def\komasubject]{subject}
+    \hypersetup{%
+      pdftitle   = {{\komasubject} – {\komaauthor}},
+      pdfauthor  = {\komaauthor},
+      pdfsubject = {\komasubject}
+    }
+  \endgroup
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sane layout defaults. No need to change usually; see below.                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\LoadLetterOption{DIN}
+
+\KOMAoptions{paper=a4}
+\KOMAoptions{fontsize=12pt}
+\KOMAoptions{fromalign=locationleft} % Align sender at the same height as the addressee
+\KOMAoptions{parskip=half} % Do not indent the first line of a paragraph, use vertical spacing instead
+\KOMAoptions{enlargefirstpage=true} % Turn off space on the first page for a footer
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Actual content, with minor custom layout modifications, if necessary       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\KOMAoptions{fromalign=locationleft} % Align sender at the same height as the addressee
+%\KOMAoptions{fromalign=right} % Move address to the top right
+%\KOMAoptions{backaddress=off} % To remove the line and the sender address
+%\KOMAoptions{backaddress=plain} % To remove just the line below the sender address
+%\KOMAoptions{foldmarks=false} % Disable markers where to fold the hardcopy
+%\KOMAoptions{parskip=half} % Do not indent the first line of a paragraph, use vertical spacing instead
+%\KOMAoptions{parskip=full} % Separates paragraphs with more vertical space
+%\KOMAoptions{parskip=no} % Indent the first line of a paragraph instead of vertical spacing
+%\KOMAoptions{pagenumber=false} % Whether to number all pages starting with the second page
+
+\date{\today}
+%\setkomavar{yourref}[Ihr Zeichen:]{2020-0000-123456}
+%\setkomavar{myref}[Mein Zeichen:]{2020-0000-123456}
+\setkomavar{subject}{Betreff}
+%\setkomavar*{enclseparator}{Anlage}
+
+
+\begin{document}
+
+\begin{letter}{%
+  Erika Musterfrau \\
+  Musterstraße 76 \\
+  54321 Musterhausen
+}
+
+\opening{Sehr geehrte Frau Musterfrau,}
+
+\lipsum[1-7]
+
+\closing{Mit freundlichen Grüßen}
+
+% Post Scriptum
+%\ps{P.S.: Additional text}
+%\ps{P.P.S.: More additional text}
+
+% Attachments
+%\encl{Form 1}
+%\encl{Form 2}
+
+\end{letter}
+
+\end{document}

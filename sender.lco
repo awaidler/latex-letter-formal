@@ -1,0 +1,15 @@
+% Place this static sender information as well as the signature image
+% in the local directory or in ~/texmf/tex/latex/
+\ProvidesFile{sender.lco}[static scrlttr2 letter sender information]
+
+\setkomavar{fromname}{Max Mustermann}
+\setkomavar{fromaddress}{Musterstraße 12\\34567 Musterstadt}
+\setkomavar{place}{Musterstadt}
+
+% Place an scanned image of the signature at the appropriate location.
+% Source: https://de.comp.text.tex.narkive.com/n9UNxHbC/eingescannte-unterschrift-in-scrlttr2
+\setkomavar{signature}{\\%
+[-2.5\baselineskip]%
+\includegraphics[height=3\baselineskip]{signature}\\
+\usekomavar{fromname}%
+}
