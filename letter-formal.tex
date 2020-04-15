@@ -44,7 +44,10 @@
 \KOMAoptions{fontsize=12pt}
 \KOMAoptions{fromalign=locationleft} % Align sender at the same height as the addressee
 \KOMAoptions{parskip=half} % Do not indent the first line of a paragraph, use vertical spacing instead
-\KOMAoptions{enlargefirstpage=true} % Turn off space on the first page for a footer
+
+% Turn off space on the first page for a footer.
+\KOMAoptions{firstfoot=false}
+\KOMAoptions{enlargefirstpage=true}
 
 
 
@@ -76,6 +79,9 @@
   Musterstraße 76 \\
   54321 Musterhausen
 }
+
+% Uncomment if you want even more space on the first page.
+%\enlargethispage{1\baselineskip}
 
 \opening{Sehr geehrte Frau Musterfrau,}
 
