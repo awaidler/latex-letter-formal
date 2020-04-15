@@ -17,6 +17,13 @@
 \usepackage{lipsum} % Lorem ipsum placeholder text
 \usepackage{graphicx} % To include an image of the hand-written signature
 
+% Format numbers and units, e.g. currencies
+\usepackage[locale=DE]{siunitx}
+\DeclareSIUnit{\sieuro}{\mbox{\texteuro}}
+% Uncomment the two lines below to use the official euro symbol
+%\usepackage{eurosym}
+%\DeclareSIUnit{\sieuro}{\mbox{\euro}}
+
 % Export KOMA metadata to PDF properties.
 % Source: https://komascript.de/node/1918
 \usepackage[pdftex]{hyperref}
